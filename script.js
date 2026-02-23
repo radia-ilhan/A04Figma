@@ -1,8 +1,13 @@
 var jobs = [
     {id:1,companyName:"Programming Hero",position:"Frontend Developer",location:"Dhaka",type:"Full time",salary:"45k BDT",description:"Build websites",status:"all"},
+
+    
     {id:2,companyName:"CodeStudio",position:"Backend Developer",location:"Rajshahi",type:"Remote",salary:"50k BDT",description:"Build websites",status:"all"},
+    
     {id:3,companyName:"High Tech Park",position:"Instructor",location:"Rajshahi",type:"Contract",salary:"30k BDT",description:"Teach AI",status:"all"},
+    
     {id:4,companyName:"VivaSoft",position:"Software Engineer",location:"Rajshahi/Dhaka",type:"Full-time",salary:"55k BDT",description:"Build websites",status:"all"},
+    
     {id:5,companyName:"Chorcha",position:"IT Intern",location:"Rajshahi",type:"Part time",salary:"10k BDT",description:"IT support",status:"all"},
 
     {id:6,companyName:"BrainStation",position:"Backend Developer",location:"Rajshahi",type:"Remote",salary:"50k BDT",description:"Build websites",status:"all"},
