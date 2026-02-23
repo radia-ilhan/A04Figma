@@ -1,48 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JobsByRadia Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+<title>JobsByRadia Dashboard</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <h1 class="title">JobsByRadia</h1>
 
-
 <div class="dashboard">
-    <div class="box">
-        <p>All Jobs</p>
-        <h2 id="allCount">0</h2>
-    </div>
-    <div class="box">
-        <p>Interview</p>
-        <h2 id="interviewCount">0</h2>
-    </div>
-    <div class="box">
-        <p>Rejected</p>
-        <h2 id="rejectedCount">0</h2>
-    </div>
+
+<div class="box">
+<p>All Jobs</p>
+<h2 id="allCount">0</h2>
+</div>
+
+<div class="box">
+<p>Interview</p>
+<h2 id="interviewCount">0</h2>
+</div>
+
+<div class="box">
+<p>Rejected</p>
+<h2 id="rejectedCount">0</h2>
+</div>
+
 </div>
 
 
 <div class="jobs-header">
-    <h2>Available Jobs</h2>
-    <p id="jobCount">0 Jobs</p>
+<h3>Available Jobs</h3>
+<p id="jobCount">0 Jobs</p>
 </div>
 
 
 <div class="tabs">
-    <button onclick="showTab('all')">All</button>
-    <button onclick="showTab('interview')">Interview</button>
-    <button onclick="showTab('rejected')">Rejected</button>
+
+<button onclick="showTab('all')">All</button>
+<button onclick="showTab('interview')">Interview</button>
+<button onclick="showTab('rejected')">Rejected</button>
+
 </div>
 
 
 <div id="jobContainer"></div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
-
-
-
