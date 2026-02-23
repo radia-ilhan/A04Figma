@@ -73,12 +73,12 @@ function render(){
         inner += "<p>Salary: " + job.salary + "</p>";
 
         inner += "<p>" + job.description + "</p>";
-        inner += "<button onclick='markJob(" + job.id + ", \"interview\")'>Interview</button>";
+        inner += "<button onclick='mark(" + job.id + ", \"interview\")'>Interview</button>";
 
 
 
-        inner += "<button onclick='markJob(" + job.id + ", \"rejected\")'>Rejected</button>";
-        inner += "<button onclick='removeJob(" + job.id + ")'>Delete</button>";
+        inner += "<button onclick='mark(" + job.id + ", \"rejected\")'>Rejected</button>";
+        inner += "<button onclick='rmv(" + job.id + ")'>Delete</button>";
 
         card.innerHTML = inner;
         container.appendChild(card);
@@ -110,7 +110,7 @@ function rmv(id){
         }
     }
     jobs = updated;
-    renderJ();
+    render();
 }
 
 
@@ -121,7 +121,7 @@ function updates(){
     var rej = 0;
 
     for(var i = 0; i < jobs.length; i++){
-        if(jobs[i].status == "inter") inter++;
+        if(jobs[i].status == "interview") inter++;
         if(jobs[i].status == "rejected") rej++;
     }
 
@@ -130,4 +130,3 @@ function updates(){
 }
 
 render();
-
