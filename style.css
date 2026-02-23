@@ -1,117 +1,131 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #5e968e;
-    padding: 20px;
-    margin: 0;
+body{
+    font-family:Arial;
+    background:#5e968e;
+    margin:0;
+    padding:10px;
+
 }
 
+.title{
+    text-align:center;
+    color:white;
+    font-size:20px;
+    margin-bottom:8px;
 
-.title {
-    text-align: center;           
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 25px;
-    color: white;
 }
 
-
-.dashboard {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 25px;
-    flex-wrap: wrap;             
+.dashboard{
+    display:flex;
+    gap:8px;
+    margin-bottom:10px;
 }
 
-.box {
-    flex: 1;
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 35px 35px 35px rgba(0,0,0,0.75); 
-    font-weight: bold;
-    transition: transform 0.2s, box-shadow 0.2s;
+.box{
+    flex:1;
+    background:white;
+    padding:4px 6px;
+    border-radius:8px;
+    text-align:center;
+    box-shadow:0px 4px 12px rgba(0,0,0,0.2);
+    cursor:pointer;
+    transition:0.25s;
+
+
+
+
 }
 
-.box:hover {
-    transform: translateY(-5px);
-    box-shadow: 35px 35px 35px rgba(0,0,0,0.75); 
+.box:hover{
+    transform:translateY(-4px);
+    box-shadow:0px 14px 30px rgba(0,0,0,0.3);
 }
 
-
-.jobs-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
+.box h2{
+    margin:2px;
+    font-size:14px;
 }
 
-
-.tabs {
-    margin: 15px 0;
+.box p{
+    margin:2px;
+    font-size:12px;
 }
 
-.tabs button {
-    padding: 8px 15px;
-    margin-right: 8px;
-    border: none;
-    background: #ddd;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: 0.2s;
+.jobs-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:6px;
+    color:#1d1642;
+    font-size:13px;
 }
 
-.tabs button:hover {
-    background: #ccc;
+.tabs{
+    margin-bottom:6px;
 }
 
-
-#jobContainer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 15px;
+.tabs button{
+    padding:4px 8px;
+    border:none;
+    background:white;
+    border-radius:8px;
+    cursor:pointer;
+    box-shadow:0px 4px 12px rgba(0,0,0,0.2);
+    transition:0.25s;
+    font-size:12px;
 }
 
-.card {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 45px 45px 45px rgba(0,0,0,0.85);
-    transition: transform 0.2s, box-shadow 0.2s;
+.tabs button:hover{
+    transform:translateY(-3px);
+    box-shadow:0px 14px 30px rgba(0,0,0,0.3);
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 45px 45px 45px rgba(0,0,0,0.85);
+#jobContainer{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:6px;
 }
 
-.card button {
-    margin-top: 8px;
-    margin-right: 5px;
-    padding: 5px 10px;
-}
-.empty {
-    grid-column: span 2;         /* span 2 columns */
-    text-align: center;
-    padding: 40px;
-    color: #555;
+.card{
+    background:white;
+    padding:4px 6px;
+    border-radius:6px;
+    box-shadow:0px 4px 12px rgba(0,0,0,0.2);
+    cursor:pointer;
+    transition:0.25s;
+    font-size:12px;
 }
 
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0px 18px 40px rgba(0,0,0,0.3);
+}
+
+.card p{
+    margin:2px 0;
+    font-size:12px;
+}
+
+.card button{
+    margin-top:4px;
+    margin-right:3px;
+    padding:4px 5px;
+    border:none;
+    border-radius:6px;
+    background:#e5e5e5;
+    cursor:pointer;
+    font-size:11px;
+
+}
+
+.empty{
+    grid-column:span 2;
+    text-align:center;
+    padding:12px;
+    
+    font-size:13px;
+}
 .empty img {
-    width: 80px;
-    margin-bottom: 10px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 10px;
+    max-width: 120px;
 }
-
-@media (max-width: 900px) {
-    #jobContainer {
-        grid-template-columns: 1fr; 
-    }
-}
-
-@media (max-width: 500px) {
-    .dashboard {
-        flex-direction: column;    
 }
