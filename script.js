@@ -1,141 +1,132 @@
 var jobs = [
     {id:1,companyName:"Programming Hero",position:"Frontend Developer",location:"Dhaka",type:"Full time",salary:"45k BDT",description:"Build websites",status:"all"},
 
-    
+
     {id:2,companyName:"CodeStudio",position:"Backend Developer",location:"Rajshahi",type:"Remote",salary:"50k BDT",description:"Build websites",status:"all"},
-    
     {id:3,companyName:"High Tech Park",position:"Instructor",location:"Rajshahi",type:"Contract",salary:"30k BDT",description:"Teach AI",status:"all"},
-    
     {id:4,companyName:"VivaSoft",position:"Software Engineer",location:"Rajshahi/Dhaka",type:"Full-time",salary:"55k BDT",description:"Build websites",status:"all"},
-    
+
+
+
     {id:5,companyName:"Chorcha",position:"IT Intern",location:"Rajshahi",type:"Part time",salary:"10k BDT",description:"IT support",status:"all"},
 
     {id:6,companyName:"BrainStation",position:"Backend Developer",location:"Rajshahi",type:"Remote",salary:"50k BDT",description:"Build websites",status:"all"},
 
     {id:7,companyName:"Selice",position:"Intern",location:"Dhaka",type:"Contract",salary:"10k BDT",description:"Build websites",status:"all"},
-
     {id:8,companyName:"NextGen IT",position:"Cyber Security Expert",location:"Remote",type:"Full time",salary:"70k BDT",description:"Fix bugs",status:"all"}
-
 ];
-var currentTab="all";
 
+var currentTab = "all";
 
 function showTab(tab){
-    currentTab=tab;
-    
+    currentTab = tab;
     renderJobs();
-
 }
 
-
 function renderJobs(){
-    var container=document.getElementById("jobContainer");
-
-    
-    container.innerHTML="";
-    var filtered=jobs.filter(function(job){
-        return currentTab=="all" || job.status==currentTab;
-
-});
+    var container = document.getElementById("jobContainer");
+    container.innerHTML = "";
 
 
-document.getElementById("jobCount").innerText=filtered.length+" Jobs";
+    var list = [];
+    for(var i = 0; i < jobs.length; i++){
+        if(currentTab == "all" || jobs[i].status == currentTab){
+            list.push(jobs[i]);
+        }
+    }
+
+    document.getElementById("jobCount").innerText = list.length + " Jobs";
+
+    //empty img
+    if(list.length == 0){
+
+        var empty = document.createElement("div");
+
+        empty.className = "empty";
 
 
-if(filtered.length === 0){
-        container.innerHTML = `
-            <div class="empty">
-                <img src="images/empty.png" alt="No jobs">
-                <h3>No jobs Available</h3>
-                <p>No records found in this section</p>
-            </div>
-        `;
-        updateDashboard();
+        empty.innerHTML = "<img src='images/empty.png' alt='No Jobs'><h3>No Jobs Available</h3><p>Nothing to show in this section</p>";
+        container.appendChild(empty);
+
+        updateCounts();
         return;
     }
 
-
-filtered.forEach(function(job){
-    var div=document.createElement("div");
-    div.className="card";
-
-    div.innerHTML=
-    "<p><b>"+job.companyName+"</b></p>"+
-
-
-
-    "<p>"+job.position+"</p>"+ "<p>"+job.location+"</p>"+
-    "<p>"+job.salary+"</p>"+
     
-    "<button onclick=\"setStatus("+job.id+",'interview')\">Interview</button>" + "<button onclick=\"setStatus("+job.id+",'rejected')\">Rejected</button>"+
-    
-    "<button onclick=\"deleteJob("+job.id+")\">Delete</button>";
-    container.appendChild(div);
-
-});
+    for(var j = 0; j < list.length; j++){
 
 
-updateDashboard();
+        var job = list[j];
 
-}
+        var card = document.createElement("div");
+        card.className = "card";
 
-
-
-function setStatus(id,status){
-
-    var job=jobs.find(function(j){
-        return j.id==id;
-
-});
+        var inner = "";
+        inner += "<p><b>" + job.companyName + "</b></p>";
 
 
-if(job.status==status)
-    job.status="all";
-else
-    job.status=status;
+        inner += "<p>Position: " + job.position + "</p>";
+        inner += "<p>Location: " + job.location + "</p>";
 
+        inner += "<p>Type: " + job.type + "</p>";
 
-renderJobs();
+        inner += "<p>Salary: " + job.salary + "</p>";
 
-}
+        inner += "<p>" + job.description + "</p>";
+        inner += "<button onclick='markJob(" + job.id + ", \"interview\")'>Interview</button>";
 
 
 
-function deleteJob(id){
-    jobs=jobs.filter(function(j){
-        
-        return j.id!=id;
+        inner += "<button onclick='markJob(" + job.id + ", \"rejected\")'>Rejected</button>";
+        inner += "<button onclick='removeJob(" + job.id + ")'>Delete</button>";
 
-});
-
-renderJobs();
-
-}
-
-
-
-function updateDashboard(){
-    document.getElementById("allCount").innerText=jobs.length;
-    
-    document.getElementById("interviewCount").innerText=
-    
-    
-    jobs.filter(function(j){
-        return j.status=="interview";
+        card.innerHTML = inner;
+        container.appendChild(card);
     }
-)
-.length;
 
-
-
-document.getElementById("rejectedCount").innerText= jobs.filter(function(j){
-    return j.status=="rejected";
-}
-)
-
-.length;
-
+    updateCounts();
 }
 
+
+function markJob(id, newStatus){
+    for(var i = 0; i < jobs.length; i++){
+        if(jobs[i].id == id){
+            if(jobs[i].status == newStatus){
+                jobs[i].status = "all";
+            } else {
+                jobs[i].status = newStatus;
+            }
+        }
+    }
+    renderJobs();
+}
+
+
+function removeJob(id){
+    var updated = [];
+    for(var i = 0; i < jobs.length; i++){
+        if(jobs[i].id != id){
+            updated.push(jobs[i]);
+        }
+    }
+    jobs = updated;
+    renderJobs();
+}
+
+
+function updateCounts(){
+    document.getElementById("allCount").innerText = jobs.length;
+
+    var interviewCount = 0;
+    var rejectedCount = 0;
+
+    for(var i = 0; i < jobs.length; i++){
+        if(jobs[i].status == "interview") interviewCount++;
+        if(jobs[i].status == "rejected") rejectedCount++;
+    }
+
+    document.getElementById("interviewCount").innerText = interviewCount;
+    document.getElementById("rejectedCount").innerText = rejectedCount;
+}
 
 renderJobs();
