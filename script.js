@@ -16,21 +16,21 @@ var jobs = [
     {id:8,companyName:"NextGen IT",position:"Cyber Security Expert",location:"Remote",type:"Full time",salary:"70k BDT",description:"Fix bugs",status:"all"}
 ];
 
-var currentTab = "all";
+var current = "all";
 
-function showTab(tab){
-    currentTab = tab;
-    renderJobs();
+function show(tab){
+    current = tab;
+    render();
 }
 
-function renderJobs(){
+function render(){
     var container = document.getElementById("jobContainer");
     container.innerHTML = "";
 
 
     var list = [];
     for(var i = 0; i < jobs.length; i++){
-        if(currentTab == "all" || jobs[i].status == currentTab){
+        if(current == "all" || jobs[i].status == current){
             list.push(jobs[i]);
         }
     }
@@ -48,7 +48,7 @@ function renderJobs(){
         empty.innerHTML = "<img src='images/empty.png' alt='No Jobs'><h3>No Jobs Available</h3><p>Nothing to show in this section</p>";
         container.appendChild(empty);
 
-        updateCounts();
+        updates();
         return;
     }
 
@@ -84,25 +84,25 @@ function renderJobs(){
         container.appendChild(card);
     }
 
-    updateCounts();
+    updates();
 }
 
 
-function markJob(id, newStatus){
+function mark(id, newS){
     for(var i = 0; i < jobs.length; i++){
         if(jobs[i].id == id){
-            if(jobs[i].status == newStatus){
+            if(jobs[i].status == newS){
                 jobs[i].status = "all";
             } else {
-                jobs[i].status = newStatus;
+                jobs[i].status = newS;
             }
         }
     }
-    renderJobs();
+    render();
 }
 
 
-function removeJob(id){
+function rmv(id){
     var updated = [];
     for(var i = 0; i < jobs.length; i++){
         if(jobs[i].id != id){
@@ -110,23 +110,24 @@ function removeJob(id){
         }
     }
     jobs = updated;
-    renderJobs();
+    renderJ();
 }
 
 
-function updateCounts(){
+function updates(){
     document.getElementById("allCount").innerText = jobs.length;
 
-    var interviewCount = 0;
-    var rejectedCount = 0;
+    var inter = 0;
+    var rej = 0;
 
     for(var i = 0; i < jobs.length; i++){
-        if(jobs[i].status == "interview") interviewCount++;
-        if(jobs[i].status == "rejected") rejectedCount++;
+        if(jobs[i].status == "inter") inter++;
+        if(jobs[i].status == "rejected") rej++;
     }
 
-    document.getElementById("interviewCount").innerText = interviewCount;
-    document.getElementById("rejectedCount").innerText = rejectedCount;
+    document.getElementById("inter").innerText = inter;
+    document.getElementById("reje").innerText = rej;
 }
 
-renderJobs();
+render();
+
