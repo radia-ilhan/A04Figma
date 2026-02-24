@@ -5,6 +5,7 @@ var jobs = [
  
     
     {id:2, companyName:"CodeStudio", position:"Backend Developer", location:"Rajshahi", type:"Remote", salary:"50k BDT", description:"Build websites", status:"all"},
+    
     {id:3, companyName:"High Tech Park", position:"Instructor", location:"Rajshahi", type:"Contract", salary:"30k BDT", description:"Teach AI", status:"all"},
    
     
@@ -12,7 +13,6 @@ var jobs = [
     {id:5, companyName:"Chorcha", position:"IT Intern", location:"Rajshahi", type:"Part time", salary:"10k BDT", description:"IT support", status:"all"},
 
 
-    
     {id:6, companyName:"BrainStation", position:"Backend Developer", location:"Rajshahi", type:"Remote", salary:"50k BDT", description:"Build websites", status:"all"},
     {id:7, companyName:"Selice", position:"Intern", location:"Dhaka", type:"Contract", salary:"10k BDT", description:"Build websites", status:"all"},
     {id:8, companyName:"NextGen IT", position:"Cyber Security Expert", location:"Remote", type:"Full time", salary:"70k BDT", description:"Fix bugs", status:"all"}
@@ -32,6 +32,7 @@ function show(tab,e) {
     var btns = document.querySelectorAll(".tabs button");
 
     for(var i=0;i<btns.length;i++){
+        
         btns[i].classList.remove("active");
     }
 
@@ -58,7 +59,8 @@ function render(){
     for(var i=0;i<jobs.length;i++){
 
         if(current==="all"){
-    filt.push(jobs[i]);
+            
+            filt.push(jobs[i]);
 
 }
 
@@ -119,6 +121,7 @@ else{
 
 
         if(job.status==="interview"){
+            
             statusText="Interview";
             statusClass="status-interview";
         }
@@ -132,20 +135,20 @@ else{
         }
 
         
-        
-
         var html="";
 
 
         html+="<div class='card-top'>";
 
         
-
         html+="<button class='delete-btn' onclick='rmv("+job.id+")'>Delete</button>";
 
         html+="</div>";
 
         html+="<h4>"+job.companyName+"</h4>";
+
+
+        
         html+="<p>"+job.position+"</p>";
 
         html+="<p>"+job.location+" • "+job.type+" • "+job.salary+"</p>";
@@ -178,6 +181,7 @@ else{
 
 
 //id diye clicked job ber korbo then stat theke interview/rejected
+
 function setStatus(id,status){
 
     for(var i=0;i<jobs.length;i++){
@@ -223,7 +227,7 @@ function rmv(id){
 }
 
 
-//var e reje lekhate status e rejected likhbo
+//var e reje text and status e rejected likhi
 function updateDash(){
 
     document.getElementById("allCount").innerText=jobs.length;
