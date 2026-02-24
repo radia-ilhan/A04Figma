@@ -1,25 +1,26 @@
 var jobs = [
 
     {id:1, companyName:"Programming Hero", position:"Frontend Developer", location:"Dhaka", type:"Full time", salary:"45k BDT", description:"Build websites", status:"all"},
-    
 
     {id:2, companyName:"CodeStudio", position:"Backend Developer", location:"Rajshahi", type:"Remote", salary:"50k BDT", description:"Build websites", status:"all"},
+
     {id:3, companyName:"High Tech Park", position:"Instructor", location:"Rajshahi", type:"Contract", salary:"30k BDT", description:"Teach AI", status:"all"},
 
     {id:4, companyName:"VivaSoft", position:"Software Engineer", location:"Rajshahi/Dhaka", type:"Full-time", salary:"55k BDT", description:"Build websites", status:"all"},
-    
 
     {id:5, companyName:"Chorcha", position:"IT Intern", location:"Rajshahi", type:"Part time", salary:"10k BDT", description:"IT support", status:"all"},
 
     {id:6, companyName:"BrainStation", position:"Backend Developer", location:"Rajshahi", type:"Remote", salary:"50k BDT", description:"Build websites", status:"all"},
+
     {id:7, companyName:"Selice", position:"Intern", location:"Dhaka", type:"Contract", salary:"10k BDT", description:"Build websites", status:"all"},
+
     {id:8, companyName:"NextGen IT", position:"Cyber Security Expert", location:"Remote", type:"Full time", salary:"70k BDT", description:"Fix bugs", status:"all"}
 ];
 
 var current = "all";
 
 
-function show(tab) {
+function show(tab,e) {
 
     current = tab;
 
@@ -29,7 +30,7 @@ function show(tab) {
         btns[i].classList.remove("active");
     }
 
-    event.target.classList.add("active");
+    e.target.classList.add("active");
 
     render();
 }
@@ -41,18 +42,22 @@ function render(){
     var container = document.getElementById("jobContainer");
 
     container.innerHTML="";
+
     var filt=[];
 
 
     for(var i=0;i<jobs.length;i++){
 
         if(current==="all" || jobs[i].status===current){
+
             filt.push(jobs[i]);
         }
     }
 
 
     document.getElementById("jobCount").innerText=filt.length+" Jobs";
+
+
     if(filt.length===0){
 
         var empt=document.createElement("div");
@@ -66,6 +71,7 @@ function render(){
         "<p>No records found in this section</p>";
 
         container.appendChild(empt);
+
         updateDash();
 
         return;
@@ -78,24 +84,21 @@ function render(){
         var job=filt[j];
 
         var card=document.createElement("div");
+
         card.className="card";
 
 
         var statusText="Not Applied";
-        
         var statusClass="status-default";
 
 
         if(job.status==="interview"){
-
-            
             statusText="Interview";
             statusClass="status-interview";
         }
 
         if(job.status==="rejected"){
             statusText="Rejected";
-            
             statusClass="status-rejected";
         }
 
@@ -106,7 +109,7 @@ function render(){
 
         html+="<div class='card-top'>";
 
-        html+="<span class='status "+statusClass+"'>"+statusText+"</span>";
+        
 
         html+="<button class='delete-btn' onclick='rmv("+job.id+")'>X</button>";
 
@@ -117,6 +120,7 @@ function render(){
         html+="<p>"+job.position+"</p>";
 
         html+="<p>"+job.location+" • "+job.type+" • "+job.salary+"</p>";
+        html+="<span class='status "+statusClass+"'>"+statusText+"</span>";
 
         html+="<p>"+job.description+"</p>";
 
