@@ -4,29 +4,33 @@ var jobs = [
 
     {id:2, companyName:"CodeStudio", position:"Backend Developer", location:"Rajshahi", type:"Remote", salary:"50k BDT", description:"Build websites", status:"all"},
 
+   
+    
     {id:3, companyName:"High Tech Park", position:"Instructor", location:"Rajshahi", type:"Contract", salary:"30k BDT", description:"Teach AI", status:"all"},
-
     {id:4, companyName:"VivaSoft", position:"Software Engineer", location:"Rajshahi/Dhaka", type:"Full-time", salary:"55k BDT", description:"Build websites", status:"all"},
-
     {id:5, companyName:"Chorcha", position:"IT Intern", location:"Rajshahi", type:"Part time", salary:"10k BDT", description:"IT support", status:"all"},
 
+ 
+    
     {id:6, companyName:"BrainStation", position:"Backend Developer", location:"Rajshahi", type:"Remote", salary:"50k BDT", description:"Build websites", status:"all"},
 
+    
     {id:7, companyName:"Selice", position:"Intern", location:"Dhaka", type:"Contract", salary:"10k BDT", description:"Build websites", status:"all"},
-
     {id:8, companyName:"NextGen IT", position:"Cyber Security Expert", location:"Remote", type:"Full time", salary:"70k BDT", description:"Fix bugs", status:"all"}
+
 ];
 
 var current = "all";
 
 
-function show(tab,e) {
+function show(tab,e){
 
     current = tab;
 
     var btns = document.querySelectorAll(".tabs button");
 
     for(var i=0;i<btns.length;i++){
+        
         btns[i].classList.remove("active");
     }
 
@@ -59,6 +63,7 @@ function render(){
 
 
     if(filt.length===0){
+        
 
         var empt=document.createElement("div");
 
@@ -70,8 +75,9 @@ function render(){
         "<h3>No Jobs Available</h3>"+
         "<p>No records found in this section</p>";
 
-        container.appendChild(empt);
+        
 
+        container.appendChild(empt);
         updateDash();
 
         return;
@@ -81,10 +87,11 @@ function render(){
 
     for(var j=0;j<filt.length;j++){
 
+        
         var job=filt[j];
-
         var card=document.createElement("div");
 
+        
         card.className="card";
 
 
@@ -93,12 +100,16 @@ function render(){
 
 
         if(job.status==="interview"){
+
+            
             statusText="Interview";
             statusClass="status-interview";
         }
 
         if(job.status==="rejected"){
+            
             statusText="Rejected";
+            
             statusClass="status-rejected";
         }
 
@@ -111,7 +122,9 @@ function render(){
 
         
 
-        html+="<button class='delete-btn' onclick='rmv("+job.id+")'>X</button>";
+        html+="<button class='delete-btn' onclick='rmv("+job.id+")'>Delete</button>";
+
+        
 
         html+="</div>";
 
@@ -122,16 +135,19 @@ function render(){
         html+="<p>"+job.location+" • "+job.type+" • "+job.salary+"</p>";
         html+="<span class='status "+statusClass+"'>"+statusText+"</span>";
 
-        html+="<p>"+job.description+"</p>";
 
+        
+        html+="<p>"+job.description+"</p>";
         html+="<button onclick='setStatus("+job.id+",\"interview\")'>Interview</button>";
 
+        
         html+="<button onclick='setStatus("+job.id+",\"rejected\")'>Rejected</button>";
 
 
 
         card.innerHTML=html;
 
+        
         container.appendChild(card);
 
     }
@@ -144,22 +160,27 @@ function render(){
 
 
 function setStatus(id,status){
+    
 
     for(var i=0;i<jobs.length;i++){
+
+        
 
         if(jobs[i].id===id){
 
             if(jobs[i].status===status){
                 jobs[i].status="all";
+                
             }
             else{
                 jobs[i].status=status;
+
+                
             }
 
         }
 
     }
-
     render();
 
 }
@@ -172,12 +193,13 @@ function rmv(id){
 
     for(var i=0;i<jobs.length;i++){
 
+        
         if(jobs[i].id!==id){
-
             newJobs.push(jobs[i]);
         }
 
     }
+
 
     jobs=newJobs;
 
@@ -196,18 +218,25 @@ function updateDash(){
 
 
     for(var i=0;i<jobs.length;i++){
+        
 
-        if(jobs[i].status==="interview"){
+        if(jobs[i].status==="interview")
+        {
             inter++;
         }
+        
 
-        if(jobs[i].status==="rejected"){
+        if(jobs[i].status==="rejected")
+        {
+            
             reje++;
         }
 
     }
 
     document.getElementById("inter").innerText=inter;
+
+    
 
     document.getElementById("reje").innerText=reje;
 
