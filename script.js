@@ -21,6 +21,10 @@ var jobs = [
 var current = "all";
 
 
+
+//  ebar html button theke show(tab,e) function call 
+// click kora button active class e add
+
 function show(tab,e) {
 
     current = tab;
@@ -36,17 +40,21 @@ function show(tab,e) {
     render();
 }
 
-//index e var name e jeshob typing mistake krsi ogula dekhe boshabo 
+
+//html theke job container
 
 function render(){
 
     var container = document.getElementById("jobContainer");
 
+
+
+    
+//ekhon prev jobs remove kori
+    
     container.innerHTML="";
 
     var filt=[];
-
-
     for(var i=0;i<jobs.length;i++){
 
         if(current==="all"){
@@ -66,9 +74,11 @@ else{
     }
 
 
-    var countText = filt.length + " Jobs";
 
+
+    // filt array te koyta job ase
     
+    var countText = filt.length + " Jobs";
     document.getElementById("jobCount").innerText = countText;
 
 
@@ -121,7 +131,8 @@ else{
             statusClass="status-rejected";
         }
 
-        //inter reje interview rejected shabdhane
+        
+        
 
         var html="";
 
@@ -165,6 +176,8 @@ else{
 
 
 
+
+//id diye clicked job ber korbo then stat theke interview/rejected
 function setStatus(id,status){
 
     for(var i=0;i<jobs.length;i++){
@@ -210,7 +223,7 @@ function rmv(id){
 }
 
 
-
+//var e reje lekhate status e rejected
 function updateDash(){
 
     document.getElementById("allCount").innerText=jobs.length;
