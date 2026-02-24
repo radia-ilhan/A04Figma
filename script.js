@@ -223,7 +223,7 @@ function rmv(id){
 }
 
 
-//var e reje lekhate status e rejected
+//var e reje lekhate status e rejected likhbo
 function updateDash(){
 
     document.getElementById("allCount").innerText=jobs.length;
