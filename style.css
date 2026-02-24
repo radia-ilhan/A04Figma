@@ -1,6 +1,9 @@
 body{
     font-family:Arial;
-    background:#5e968e;
+
+    background:#f1f1f1;
+
+
     margin:0;
     padding:10px;
 
@@ -8,8 +11,9 @@ body{
 
 .title{
     text-align:center;
-    color:white;
+    color:rgb(11, 11, 11);
     font-size:20px;
+
     margin-bottom:8px;
 
 }
@@ -37,24 +41,31 @@ body{
 
 .box:hover{
     transform:translateY(-4px);
+
     box-shadow:0px 14px 30px rgba(0,0,0,0.3);
 }
 
 .box h2{
     margin:2px;
+
     font-size:14px;
 }
 
 .box p{
     margin:2px;
+
     font-size:12px;
 }
 
 .jobs-header{
     display:flex;
+
     justify-content:space-between;
     margin-bottom:6px;
+
+
     color:#1d1642;
+
     font-size:13px;
 }
 
@@ -123,8 +134,72 @@ body{
     
     font-size:13px;
 }
+
 .empty img {
-    display: block;
-    margin: 0 auto 10px;
-    max-width: 120px;
+    display:block;
+    margin:0 auto 10px;
+    max-width:120px;
+}
+
+.status {
+    padding:3px 8px;
+    border-radius:6px;
+    font-size:11px;
+    border:1px solid;
+}
+
+.status-default {
+    color: gray;
+    border-color: gray;
+    background: rgba(128,128,128,0.1);
+}
+
+.status-interview {
+    color: green;
+    border-color: green;
+    background: rgba(0,128,0,0.1);
+}
+
+.status-rejected {
+    color: red;
+    border-color: red;
+    background: rgba(255,0,0,0.1);
+}
+}
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 12px;
+}
+#allCount {
+    font-weight: bold;
+    color: black;
+}
+
+#inter {
+    font-weight: bold;
+    color: green;
+}
+
+#reje {
+    font-weight: bold;
+    color: red;
+}
+.tabs button {
+    border: 1px solid gray;
+    background: white;
+    color: gray;
+}
+
+.tabs button.active {
+    background: #3b82f6;
+    color: white;
+    border: none;
 }
