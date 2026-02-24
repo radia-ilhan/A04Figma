@@ -93,7 +93,7 @@ else{
         return;
     }
 
-    //stat likhsilam dekhe bhul hoisilo
+    //stat status mixed likhsilam dekhe bhul hoisilo
 
     for(var j=0;j<filt.length;j++){
 
@@ -114,11 +114,14 @@ else{
         }
 
         if(job.status==="rejected"){
+
+            
             statusText="Rejected";
+            
             statusClass="status-rejected";
         }
 
-        //inter rteje interview rerjected shabdhane
+        //inter reje interview rejected shabdhane
 
         var html="";
 
